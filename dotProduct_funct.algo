@@ -1,0 +1,32 @@
+FUNCTION dot_product(v1,v2:ARRAY_OF FLOAT) : FLOAT
+VAR
+    result:FLOAT
+BEGIN
+    FOR i FROM 0 TO v1.length-1 STEP step  DO
+     result+=v1[i]*v2[i]
+    END_FOR
+    RETURN result ;
+END
+
+ALGORITHM Dot product
+VAR 
+ n,i,j:INTEGER
+ ps:FLOAT:=0
+ tab_vect: ARRAY_OF ARRAY_OF FLOAT[n];
+  
+BEGIN
+
+    FOR i FROM 0 TO tab_vect.length-1   DO
+        FOR j FROM i+1 TO tab_vect.length-2  DO
+            IF(tab_vect[i].length==tab_vect[j].length) THEN
+                ps:=dot_product(tab_vect[i],tab_vect[j])
+                IF (ps=0) THEN
+                    Write("The two vectors ",tab_vect[i]," and ",tab_vect[j]," are orthogonal")
+                ELSE
+                    Write("The two vectors ",tab_vect[i]," and ",tab_vect[j]," are not orthogonal")
+                END_IF
+            ELSE
+             Write("The two vectors ",tab_vect[i]," and ",tab_vect[j]," are not orthogonal")
+            END_IF
+        END_FOR
+    END_FOR
